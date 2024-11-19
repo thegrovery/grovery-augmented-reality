@@ -3,40 +3,45 @@
 import ARLayout from '@layouts/AR-Layout.astro';
 import CustomUI from '@components/ARComponents/CustomUI.astro';
 
+//Project Data
+const projectData = await import("src/data/projectData/grovery-holiday-2024.json");
+
 /*===== Main Settings =====*/
-let defaultRotation = "wall"; // "flat" or "wall"
-let markerFile = "/markers/grovery-holiday-marker-v2.mind";
-let markerImage = "/markers/grovery-holiday-marker-v2.jpg";
-let infoLink = "https://grovery-ar.netlify.app/grovery-holiday-ar/info";
+	let defaultRotation = projectData.modelSettings.defaultRotationSetting; // "flat" or "wall"
+	const defaultScale = projectData.modelSettings.defaultScale;
+	const markerFile = projectData.markerFile;
+	const markerImage = projectData.markerImage;
+	const modelFile = projectData.modelFile;
+	const infoLink = projectData.projectBaseUrl + "/project-info";
 
 /*===== Position Configurations =====*/
 	let rotationSetting = "";
 	let positionSetting = "";
 	//Wall surface configuration - 
-	let WallRotationSetting = "0 0 0";		//don't change
-	let WallpositionSetting = "0 0 0.1";	//change as needed
+	let WallRotationSetting = projectData.modelSettings.wallRotationSetting;		//don't change
+	let WallpositionSetting = projectData.modelSettings.wallPositionSetting;	//change as needed
 
 	//Flat surface configuration
-	let FlatRotationSetting = "90 0 0";		//don't change
-	let FlatpositionSetting = "0 0 0.1";	//probably don't change
+	let FlatRotationSetting = projectData.modelSettings.flatRotationSetting;		//don't change
+	let FlatpositionSetting = projectData.modelSettings.flatPositionSetting;	//probably don't change
 
 	//Card surface configuration
-	let CardRotationSetting = "90 0 0";		//don't change
-	let CardpositionSetting = "0 0 0.1";	//change as needed
+	let CardRotationSetting = projectData.modelSettings.cardRotationSetting;		//don't change
+	let CardpositionSetting = projectData.modelSettings.cardPositionSetting;	//change as needed
 
 /*===== Starting Rotation Settings =====*/
 	if(defaultRotation == "flat"){
-		rotationSetting = "90 0 0";
-		positionSetting = "0 0 0.1";
+		rotationSetting = projectData.modelSettings.flatRotationSetting;
+		positionSetting = projectData.modelSettings.flatPositionSetting;
 	}else{
-		rotationSetting = "0 0 0";
-		positionSetting = "0 0 0.1";
+		rotationSetting = projectData.modelSettings.wallRotationSetting;
+		positionSetting = projectData.modelSettings.wallPositionSetting;
 	}
 
 ---
 
 <ARLayout 
-	title="AR_Test_1"
+	title={projectData.projectName}
 >
 
 <div class="links">
@@ -74,7 +79,7 @@ let infoLink = "https://grovery-ar.netlify.app/grovery-holiday-ar/info";
 	<!-- <img id="card" src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.2.5/examples/image-tracking/assets/card-example/card.png" /> -->
 	<a-asset-item 
 		id="displayModel" 
-		src="/3d-objects/snowman/scene.gltf"
+		src={modelFile}
 	></a-asset-item>
 </a-assets>
 
@@ -105,7 +110,7 @@ let infoLink = "https://grovery-ar.netlify.app/grovery-holiday-ar/info";
 		<a-gltf-model 
 			rotation="0 0 0" 
 			position="0 0 0.1" 
-			scale="0.5 0.5 0.5" 
+			scale="7 7 7" 
 			src="#displayModel"
 			animation="property: rotation; to: 0 360 0; loop: true; dur: 10000; easing: linear;"
 		/>
