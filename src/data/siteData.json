@@ -1,0 +1,12 @@
+{
+    "siteURL": "https://grovery-ar.netlify.app",
+    "titleSuffix": "| The Grovery",
+    "companyName": "The Grovery",
+    "companyLogo": "/images/logo.png",
+    "companyLogoGlyph": "/images/logo-glyph.svg",
+    "fallbackDescription": "Augmented Reality Experiences",
+    "siteMetadata": {
+        "author": "The Grovery",
+        "themeColor": "light"
+    }
+}  
