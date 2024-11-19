@@ -10,7 +10,7 @@ import Layout from '@layouts/PrintoutLayout.astro';
 
 import QRCode from '@components/QRCode.astro';
 
-const baseURL = "https://interzone-vr-ar-tests.netlify.app/grovery-holiday-ar";
+const baseURL = "https://grovery-ar.netlify.app/grovery-holiday-ar";
 
 ---
 
@@ -18,13 +18,19 @@ const baseURL = "https://interzone-vr-ar-tests.netlify.app/grovery-holiday-ar";
 	title="Grovery Holiday AR"
 	heading="Grovery Holiday AR"
 	marker="/markers/grovery-holiday-marker.png"
-	qrcode="https://interzone-vr-ar-tests.netlify.app/grovery-holiday-ar?position=wall"
+	qrcode="https://grovery-ar.netlify.app/grovery-holiday-ar?position=wall"
 >
 
 <section class="text">
 	<p>
 		QR Codes: All Augmented Reality projects on here come with 3 pre-configured QR codes - they all open the same thing, but have different sizing, position, and orientation presets for the 3D model depending on the context of how you want to display it. You can switch the view mode inside the viewer by clicking the "Switch View" button, but using the correct QR code is the easiest way to ensure the correct settings are used.
 	</p>
+
+	<div class="markerSection">
+		
+		<img src="/markers/grovery-holiday-marker-v2.jpg"/>
+		
+	</div>
 </section>
 
 <div class="qr-grid">
@@ -39,7 +45,7 @@ const baseURL = "https://interzone-vr-ar-tests.netlify.app/grovery-holiday-ar";
 		<div class="qr-wrapper">
 			<QRCode 
 				id="wall-qrcode"
-				link="https://interzone-vr-ar-tests.netlify.app/grovery-holiday-ar?position=wall" 
+				link={`${baseURL}?position=wall`}
 			/>
 			<a href={`${baseURL}?position=wall`} target="_blank">{`${baseURL}?position=wall`}</a>
 		</div>
@@ -56,7 +62,7 @@ const baseURL = "https://interzone-vr-ar-tests.netlify.app/grovery-holiday-ar";
 		<div class="qr-wrapper">
 			<QRCode 
 				id="flat-qrcode"
-				link="https://interzone-vr-ar-tests.netlify.app/grovery-holiday-ar?position=flat" 
+				link={`${baseURL}?position=flat`}
 			/>
 			<a href={`${baseURL}?position=flat`} target="_blank">{`${baseURL}?position=flat`}</a>
 		</div>
@@ -73,18 +79,14 @@ const baseURL = "https://interzone-vr-ar-tests.netlify.app/grovery-holiday-ar";
 		<div class="qr-wrapper">
 			<QRCode 
 				id="default-qrcode"
-				link="https://interzone-vr-ar-tests.netlify.app/grovery-holiday-ar" 
+				link={`${baseURL}?position=card`}
 			/>
 			<a href={`${baseURL}?position=card`} target="_blank">{`${baseURL}?position=card`}</a>
 		</div>
 	</div>
 </div>
 
-<section class="markerSection">
-		
-	<img src="/markers/grovery-holiday-marker.png"/>
-	
-</section>
+
 
 </Layout>
 
