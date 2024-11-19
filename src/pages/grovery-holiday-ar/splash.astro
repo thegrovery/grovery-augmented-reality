@@ -11,14 +11,18 @@ import Layout from '@layouts/SplashLayout.astro';
 //Content Components
 	//import MasterComponent from '@components/MasterComponent.astro';
 	
+//Project Data
+const projectData = await import("src/data/projectData/grovery-holiday-2024.json");
+
 ---
 
 <Layout 
-	title="Grovery Holiday AR"
-	heading="Grovery Holiday AR"
-	marker="/markers/grovery-holiday-marker-v2.jpg"
-	qrcode="https://grovery-ar.netlify.app/grovery-holiday-ar?position=wall"
-	background="/images/christmas-bg.jpg"
+	title={projectData.projectName}
+	heading={projectData.projectName}
+	description={projectData.projectDescription}
+	marker={projectData.markerImage}
+	qrcode={projectData.projectBaseUrl + "?position=wall"}
+	background={projectData.splashPage.backgroundImage}
 >
 </Layout>
 
