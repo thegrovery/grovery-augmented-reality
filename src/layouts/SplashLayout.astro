@@ -50,8 +50,9 @@
 						<QRCode link={qrcode} id="qrcode" />
 						<a href={qrcode} target="_blank">{qrcode}</a>
 					</div>
-					<div class="subheading cautionStripes">
-						<!-- <div class="symbol">⚠ ⚠ ⚠ ⚠ ⚠</div> -->
+					{pdfs.available &&
+						<div class="subheading cautionStripes">
+							<!-- <div class="symbol">⚠ ⚠ ⚠ ⚠ ⚠</div> -->
 						<p>⚠ Printable PDFs ⚠</p>
 						<!-- <div class="symbol">⚠ ⚠ ⚠ ⚠ ⚠</div> -->
 					</div>
@@ -66,7 +67,7 @@
 						<p><strong>NOTE:</strong> There are 2 versions of the printout. They are optimized for different viewing orientations. The <strong>wall preset</strong> is designed to be used like a poster or flyer and displayed on a wall. The <strong>flat preset</strong> is designed to be placed flat on a surface, like a table or desk. Please ensure you use the correct printout for your intended presentation. </p> 
 						
 					</div>
-					
+					}
 
 				</div>
 

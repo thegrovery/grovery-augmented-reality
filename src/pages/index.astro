@@ -24,11 +24,20 @@
 	
 	<section>
 		<h2 class="text-size-3">Links</h2>
-		<LinkCard
+		<div class="card-grid">
+			<LinkCard
 			name="Grovery Holiday Card 2024"
 			description="Augmented Reality Holiday Card"
 			link="/grovery-holiday-ar"
 		/>	
+
+		<LinkCard
+			name="Video Test"
+			description="v1 Basic Video Test."
+			link="/video-test"
+		/>	
+		</div>
+		
 	</section>
 
 	<SiteQRCodeLink/>
@@ -37,3 +46,10 @@
 </Layout>
 
 
+<style>
+	.card-grid{
+		display: flex;
+		flex-wrap: wrap;
+		gap: 1rem;
+	}
+</style>
