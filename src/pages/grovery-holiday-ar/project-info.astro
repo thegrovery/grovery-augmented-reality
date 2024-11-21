@@ -6,37 +6,69 @@
 /*========================================*/
 
 //Essential Components
-import Layout from '@layouts/PrintoutLayout.astro';
+import Layout from '@layouts/Layout.astro';
 
 import QRCode from '@components/QRCode.astro';
 
 const baseURL = "https://grovery-ar.netlify.app/grovery-holiday-ar";
 
+//Project Data
+	const projectData = await import("src/data/projectData/grovery-holiday-2024.json");
+
 ---
 
 <Layout 
-	title="Grovery Holiday AR"
-	heading="Grovery Holiday AR"
-	marker="/markers/grovery-holiday-marker.png"
-	qrcode="https://grovery-ar.netlify.app/grovery-holiday-ar?position=wall"
+	title={projectData.projectName}
+	heading={"Project Info | "+projectData.projectName}
+	marker={projectData.markerImage}
+
 >
-
 <section class="text">
-	<p>
-		QR Codes: All Augmented Reality projects on here come with 3 pre-configured QR codes - they all open the same thing, but have different sizing, position, and orientation presets for the 3D model depending on the context of how you want to display it. You can switch the view mode inside the viewer by clicking the "Switch View" button, but using the correct QR code is the easiest way to ensure the correct settings are used.
-	</p>
-
-	<div class="markerSection">
+	<h2>Contents</h2>
+	<ul>
+		<li><a href="#definitions">Definitions</a></li>
+		<li><a href="#qrcodes">QR Codes</a></li>
+		<li><a href="#marker">Marker Image</a></li>
 		
-		<img src="/markers/grovery-holiday-marker-v2.jpg"/>
-		
-	</div>
+	</ul>
 </section>
 
-<div class="qr-grid">
+<section id="definitions" class="text">
+	<h2>Definitions</h2>
+	<ul class="definitionsList">
+		<li><strong>Augmented Reality</strong>: Technology mixing Virtual Reality with the real world.</li>
+		<ul>
+			<li>Augmented Reality can have 2 presentations: via your phone's camera, or via a VR headset.</li>
+			<li>This project is focused on phone-based AR, but is expected to also work on WebXR-capable headsets.</li>
+		</ul>
+		
+		<li><strong>QR Code</strong>: A quick and easy way to open the AR experience on your phone.</li>
+		<ul>
+			<li>QR codes are actually extremely simple - they are essentially just a large block of Braille text that your phone can read, but they use black squares instead of raised dots.</li>
+			<li>The AR experience is hosted on a normal web page, so the link can be shared on social media, in an email, or in a chat message - just like any other web page. The QR code is simply the most simple and direct way for someone to open the link on their phone.</li>
+			<li>All projects on this site come with 3 pre-configured QR codes, each with different size and position settings for the 3D model.</li>
+		</ul>
+		
+		<li><strong>Marker</strong>: The custom image that serves as the "anchor point" in real world space for the AR experience.</li>
+		<ul>
+			<li>Your camera uses machine vision to run calculations to determine the size, position, and angle of the marker, and uses that to size and position the virtual elements in the real world space.</li>
+		</ul>
+
+		<li><strong>3D Model</strong>: </li>
+		<ul>
+			<li>May also be referred to as a "virtual hologram" or just a "hologram" .</li>
+		</ul>
+
+	</ul>
+
+	
+</section>
+
+<section id="qrcodes" class="qr-grid">
+	<h2>QR Codes</h2>
 	<div class="qr-cell">
 		<div class="text-content">
-			<h2>Wall View</h2>
+			<h2>Wall Preset</h2>
 			<ul>
 				<li>Context: The marker is displayed on a flat vertical surface, such as a wall, computer screen, or a television.</li>
 				<li>Behavior: The 3D model appears in front of the marker.</li>
@@ -53,7 +85,7 @@ const baseURL = "https://grovery-ar.netlify.app/grovery-holiday-ar";
 
 	<div class="qr-cell">
 		<div class="text-content">
-			<h2>Flat View</h2>
+			<h2>Flat Preset</h2>
 			<ul>
 				<li>Context: The marker is laying on a flat horizontal surface such as a desk or table. Easy to use with the provided printout page.</li>
 				<li>Behavior: The 3D model appears above the marker.</li>
@@ -70,7 +102,7 @@ const baseURL = "https://grovery-ar.netlify.app/grovery-holiday-ar";
 
 	<div class="qr-cell">
 		<div class="text-content">
-			<h2>Card View</h2>
+			<h2>Card Preset</h2>
 			<ul>
 				<li>Context: similar to the flat position, but the 3D model is sized and positioned to account for a smaller marker image. Depending on the 3D model, this may end up being the same as the Flat View settings.</li>
 				<li>Behavior: The 3D model appears above the marker.</li>
@@ -84,7 +116,19 @@ const baseURL = "https://grovery-ar.netlify.app/grovery-holiday-ar";
 			<a href={`${baseURL}?position=card`} target="_blank">{`${baseURL}?position=card`}</a>
 		</div>
 	</div>
-</div>
+</section>
+
+<section id="marker"class="markerSection">
+	<div class="cautionStripes">
+		<p>Marker Image - Point your camera at this image to view the asset.</p>
+	</div>
+
+	<img src="/markers/grovery-holiday-marker-v2.jpg"/>
+	
+	<div class="cautionStripes">
+		<p>This image acts as a <strong>real-world anchor point</strong> for the virtual hologram.</p>
+	</div>
+</section>
 
 
 
@@ -92,13 +136,47 @@ const baseURL = "https://grovery-ar.netlify.app/grovery-holiday-ar";
 
 
 <style lang="scss">
+
+	section{
+		border-bottom: var(--border-settings-main);
+	}
+
+	.definitionsList{
+		width: 100%;
+		max-width: 800px;
+		margin: auto;
+		margin-top: 2rem;
+		>li{
+			background-color: var(--accent-color);
+			color: var(--background-color);
+			padding: 0.1em 0.5em;
+			&::marker{
+				color: var(--accent-color)
+			}
+			strong{
+				text-decoration: underline;
+				font-size: 1.2em;
+			}
+		}
+		>ul{
+			margin-bottom: 1.5rem;
+			border-left: solid 2px var(--accent-color);
+			
+		}
+	}
 	.markerSection{
 		display: flex;
 		justify-content: center;
 		align-items: center;
+		flex-direction: column;
 		img{
 			width: 100%;
-			max-width: 85vh;
+			max-width: 90vh;
+			margin: 2rem 0;
+		}
+		.cautionStripes{
+			width: 100%;
+			max-width: 800px;
 		}
 	}
 
