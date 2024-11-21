@@ -7,7 +7,7 @@
 	import HeadGlobal from "@components/HeadGlobal.astro";
 
 //Props
-	const { title, description, heading, qrcode, marker, background } = Astro.props;
+	const { title, description, heading, qrcode, marker, background, pdfs } = Astro.props;
 
 //Site Data
 	const siteData = await import("src/data/siteData.json");
@@ -50,10 +50,25 @@
 						<QRCode link={qrcode} id="qrcode" />
 						<a href={qrcode} target="_blank">{qrcode}</a>
 					</div>
+					<div class="subheading cautionStripes">
+						<!-- <div class="symbol">⚠ ⚠ ⚠ ⚠ ⚠</div> -->
+						<p>⚠ Printable PDFs ⚠</p>
+						<!-- <div class="symbol">⚠ ⚠ ⚠ ⚠ ⚠</div> -->
+					</div>
+					<div class="bodyText">
+						<p>These PDFs can be printed out and used to present the 3D hologram in a physical space. They come with a QR code link and brief instructions.</p>
+						<br/>
+						<div class="pdfLinks">
+							<a href={pdfs.wall} target="_blank">Wall Preset PDF</a>
+							<a href={pdfs.flat} target="_blank">Flat Preset PDF</a>
+						</div>
+						<br/>
+						<p><strong>NOTE:</strong> There are 2 versions of the printout. They are optimized for different viewing orientations. The <strong>wall preset</strong> is designed to be used like a poster or flyer and displayed on a wall. The <strong>flat preset</strong> is designed to be placed flat on a surface, like a table or desk. Please ensure you use the correct printout for your intended presentation. </p> 
+						
+					</div>
+					
 
 				</div>
-
-				
 
 			</section>
 			
@@ -67,7 +82,7 @@
 					<img src={marker ? marker : "/markers/complex-marker-v1.jpg"}/>						
 
 					<div class="cautionStripes">
-						<p>This images acts as a <strong>real-world anchor point</strong> for the virtual hologram.</p>
+						<p>This image acts as a <strong>real-world anchor point</strong> for the virtual hologram.</p>
 					</div>
 				</div>
 			</section>
@@ -91,6 +106,9 @@
 
 	main.fullscreen-layout {
 		display: flex;
+		flex-direction: row;
+		justify-content: flex-start;
+		align-items: flex-start;
 		//height: 100vh;
 		//width: 100vw;
 		margin: 0;
@@ -140,7 +158,7 @@
 		}
 		.subheading{
 			font-size: 1.75rem;
-			
+			text-align: center;
 		}
 		.bodyText {
 			font-size: 1rem;
@@ -156,8 +174,21 @@
 				background-color: var(--accent-color);
 				color: var(--background-color);
 			}
+			.pdfLinks{
+				display: flex;
+				flex-direction: row;
+				justify-content: center;
+				align-items: center;
+			}
 			p{
 				margin-bottom: 0;
+			}
+			a{
+				text-decoration: none;
+				background-color: var(--accent-color);
+				color: var(--background-color);
+				padding: 0.5rem 1rem;
+				margin: 0.5rem;
 			}
 		}
 	}

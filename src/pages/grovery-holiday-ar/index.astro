@@ -38,6 +38,10 @@ const projectData = await import("src/data/projectData/grovery-holiday-2024.json
 		positionSetting = projectData.modelSettings.wallPositionSetting;
 	}
 
+
+/*===== Animation Presets =====*/
+	const animation360 = "property: rotation; to: 0 360 0; loop: true; dur: 10000; easing: linear;" 
+
 ---
 
 <ARLayout 
@@ -75,47 +79,49 @@ const projectData = await import("src/data/projectData/grovery-holiday-2024.json
 	xr-mode-ui="enabled: false"
 	device-orientation-permission-ui="enabled: false"
 >
-<a-assets>
-	<!-- <img id="card" src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.2.5/examples/image-tracking/assets/card-example/card.png" /> -->
-	<a-asset-item 
-		id="displayModel" 
-		src={modelFile}
-	></a-asset-item>
-</a-assets>
+	<a-assets>
+		<!-- <img id="card" src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.2.5/examples/image-tracking/assets/card-example/card.png" /> -->
+		<a-asset-item 
+			id="displayModel" 
+			src={modelFile}
+		></a-asset-item>
+	</a-assets>
 
-<a-camera 
-	position="0 0 0" 
-	look-controls="enabled: false"
-></a-camera>
+	<a-camera 
+		position="0 0 0" 
+		look-controls="enabled: false"
+	></a-camera>
 
-<a-entity 
-	mindar-image-target="targetIndex: 0"
->
-	<a-entity
-		id="objectWrapper"
-		rotation={rotationSetting ? rotationSetting : "90 0 0"}
-		position={positionSetting ? positionSetting : "0 0 0.1"}
-		data-rotation-setting="flat"
-		
-		data-wall-position={WallpositionSetting}
-		data-wall-rotation={WallRotationSetting}
-
-		data-flat-position={FlatpositionSetting}
-		data-flat-rotation={FlatRotationSetting}
-
-		data-card-position={CardpositionSetting}
-		data-card-rotation={CardRotationSetting}
+	<a-entity 
+		id="mind-ar-target"
+		mindar-image-target="targetIndex: 0"
 	>
-		<!-- <a-plane src="#card" position="0 0 0" height="0.552" width="1" rotation="0 0 0"></a-plane> -->
-		<a-gltf-model 
-			rotation="0 0 0" 
-			position="0 0 0.1" 
-			scale="7 7 7" 
-			src="#displayModel"
-			animation="property: rotation; to: 0 360 0; loop: true; dur: 10000; easing: linear;"
-		/>
+		<a-entity
+			id="objectWrapper"
+			rotation={rotationSetting ? rotationSetting : "90 0 0"}
+			position={positionSetting ? positionSetting : "0 0 0.1"}
+			data-rotation-setting="flat"
+			
+			data-wall-position={WallpositionSetting}
+			data-wall-rotation={WallRotationSetting}
+
+			data-flat-position={FlatpositionSetting}
+			data-flat-rotation={FlatRotationSetting}
+
+			data-card-position={CardpositionSetting}
+			data-card-rotation={CardRotationSetting}
+		>
+			<!-- <a-plane src="#card" position="0 0 0" height="0.552" width="1" rotation="0 0 0"></a-plane> -->
+			<a-gltf-model 
+				rotation="0 0 0" 
+				position="0 0 0.1" 
+				scale="7 7 7" 
+				src="#displayModel"
+				
+			/>
+		</a-entity>
 	</a-entity>
-</a-entity>
+
 </a-scene>
 
 </ARLayout>
