@@ -4,7 +4,7 @@ import ARLayout from '@layouts/AR-Layout.astro';
 import CustomUI from '@components/ARComponents/CustomUI.astro';
 
 //Project Data
-const projectData = await import("src/data/projectData/grovery-holiday-2024.json");
+const projectData = await import("src/data/projectData/video-test.json");
 
 /*===== Main Settings =====*/
 	let defaultRotation = projectData.modelSettings.defaultRotationSetting; // "flat" or "wall"
@@ -109,13 +109,7 @@ const projectData = await import("src/data/projectData/grovery-holiday-2024.json
 			data-card-rotation={CardRotationSetting}
 		>
 			<a-video src="#myvideo" width="3" height="1.5"></a-video>
-			<!-- <a-gltf-model 
-				rotation="0 0 0" 
-				position="0 0 0.1" 
-				scale="7 7 7" 
-				src="#displayModel"
-				animation="property: rotation; to: 0 360 0; loop: true; dur: 10000; easing: linear;"
-			/> -->
+			
 		</a-entity>
 	</a-entity>
 
