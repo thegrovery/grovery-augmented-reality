@@ -28,6 +28,7 @@
         "backgroundImage": "/images/christmas-bg.jpg"        
     },
     "pdfs":{
+        "available": true,
         "wall": "/pdf/grovery-holiday-card-2024-AssetPrintout-Wall.pdf",
         "flat": "/pdf/grovery-holiday-card-2024-AssetPrintout-Flat.pdf"
     }
