@@ -79,7 +79,7 @@ const projectData = await import("src/data/projectData/grovery-holiday-2024.json
 		<img id="card" src="/images/grovery-vr-logo.png" />
 
 		<a-asset-item 
-			id="myvideo" 
+			id="displayModel" 
 			src={modelFile}
 		></a-asset-item>
 	</a-assets>
@@ -108,7 +108,7 @@ const projectData = await import("src/data/projectData/grovery-holiday-2024.json
 			data-card-position={CardpositionSetting}
 			data-card-rotation={CardRotationSetting}
 		>
-			<a-video src="#myvideo" width="3" height="1.5"></a-video>
+			<a-plane src="#card" position="0 0 0" height="0.5" width="1.2" rotation="0 0 0"></a-plane>
 			<!-- <a-gltf-model 
 				rotation="0 0 0" 
 				position="0 0 0.1" 
