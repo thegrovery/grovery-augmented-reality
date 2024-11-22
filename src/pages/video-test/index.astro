@@ -42,6 +42,7 @@ const projectData = await import("src/data/projectData/video-test.json");
 
 <ARLayout 
 	title={projectData.projectName}
+	type="video"
 >
 
 <div class="links">
@@ -108,7 +109,7 @@ const projectData = await import("src/data/projectData/video-test.json");
 			data-card-position={CardpositionSetting}
 			data-card-rotation={CardRotationSetting}
 		>
-			<a-video src="#myvideo" width="3" height="1.5"></a-video>
+			<a-video id="ar-video" src={modelFile} width="2" height="1"></a-video>
 			
 		</a-entity>
 	</a-entity>
