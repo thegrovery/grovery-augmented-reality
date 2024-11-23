@@ -6,7 +6,7 @@
 	import HeadAR from "@components/HeadAR.astro";
 
 //Props
-	const { title, description } = Astro.props;
+	const { title, description, type } = Astro.props;
 
 
 ---
@@ -15,6 +15,7 @@
 <html lang="en" data-theme="light">
 	<head>
 		<HeadAR title={title} description={description}/>
+		<!-- {type == "video" && <script src="/scripts/ar-video-handler.js"></script>} -->
 
 	</head>
 	<body>
