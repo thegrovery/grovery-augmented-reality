@@ -173,13 +173,13 @@ const projectData = await import("src/data/projectData/grovery-holiday-2024.json
 				scale="1 1 1"
 			></a-entity> -->
 
-			<a-image src="/markers/grovery-holiday-card.png" width="1" height="1"></a-image>
+			<a-image src="/markers/grovery-holiday-card.png" width="1" height="1" position="0 0 0.01"></a-image>
 			
 			<a-entity
 				play-video="video: #alpha-video-background; autoplay: true"
 				material="shader: chromakey; src: #alpha-video-background; color: 0.01,1.00,0.00; side: double; depthTest: true;"
 				geometry="primitive: plane; height: 1; width: 1;"
-				position="0 0 0.2"
+				position="0 0 0.25"
 				scale="1 1 1"
 			></a-entity>
 
@@ -187,7 +187,7 @@ const projectData = await import("src/data/projectData/grovery-holiday-2024.json
 				play-video="video: #alpha-video-midground; autoplay: true"
 				material="shader: chromakey; src: #alpha-video-midground; color: 0.01,1.00,0.00; side: double; depthTest: true;"
 				geometry="primitive: plane; height: 1; width: 1;"
-				position="0 0 0.3"
+				position="0 0 0.5"
 				scale="1 1 1"
 			></a-entity> 
 
@@ -195,7 +195,7 @@ const projectData = await import("src/data/projectData/grovery-holiday-2024.json
 				play-video="video: #alpha-video-foreground; autoplay: true"
 				material="shader: chromakey; src: #alpha-video-foreground; color: 0.01,1.00,0.00; side: double; depthTest: true;"
 				geometry="primitive: plane; height: 1; width: 1;"
-				position="0 0 0.5"
+				position="0 0 0.75"
 				scale="1 1 1"
 			></a-entity>
 
