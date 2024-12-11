@@ -5,6 +5,8 @@
 //Components
 import ARLayout from '@layouts/AR-Layout.astro';
 import CustomUI from '@components/ARComponents/CustomUI.astro';
+import ExtraUI from '@components/ARComponents/ExtraUI.astro';
+import Modal from '@components/ARComponents/Modal.astro';
 
 //Project Data
 const projectData = await import("src/data/projectData/grovery-holiday-2024.json");
@@ -16,6 +18,7 @@ const projectData = await import("src/data/projectData/grovery-holiday-2024.json
 	const markerImage = projectData.markerImage;
 	const modelFile = projectData.modelFile;
 	const infoLink = projectData.projectBaseUrl + "/project-info";
+	const controls = projectData.controls;
 
 /*===== Position Configurations =====*/
 	let rotationSetting = "";
@@ -40,6 +43,7 @@ const projectData = await import("src/data/projectData/grovery-holiday-2024.json
 		rotationSetting = projectData.modelSettings.wallRotationSetting;
 		positionSetting = projectData.modelSettings.wallPositionSetting;
 	}
+
 
 ---
 
@@ -72,27 +76,20 @@ const projectData = await import("src/data/projectData/grovery-holiday-2024.json
 	
 </script>
 
-<div class="links">
-	<a href={infoLink}>Project Info</a>
-	<a href="/learn-more">Learn More</a>
-</div>
-
-<div class="controls">
-	<div 
-		class="controlButton" 
-		data-control-button="wall"
-	>
-		Switch View: Wall
-	</div>
-
-	<div 
-		class="controlButton" 
-		data-control-button="flat"
-	>
-		Switch View: Flat
-	</div>
-</div>
-
+<Modal modalId="markerModal">
+	<h2>Marker Image</h2>
+	<p>This is the <strong>marker image</strong> that you need to aim your camera at to see the virtual content.</p>
+	<p>The <strong>marker image</strong> is an "anchor point" for the virtual content in the real world.</p>
+	<img src={markerImage} alt="Marker Image">
+	<style lang="scss">
+		img{
+			max-width: 400px;
+			margin: auto;
+			display: block;
+		}
+	</style>
+</Modal>
+<ExtraUI infoLink={infoLink} controls={controls}/>
 <CustomUI/>
 
 <a-scene 
@@ -110,7 +107,7 @@ const projectData = await import("src/data/projectData/grovery-holiday-2024.json
 	
 >
 	<a-assets>
-		<img id="card" src="/images/grovery-vr-logo.png" />
+		<img id="card" src="/markers/grovery-holiday-card.png" />
 
 		<video
 			id="alpha-video-background"
@@ -164,20 +161,12 @@ const projectData = await import("src/data/projectData/grovery-holiday-2024.json
 			data-card-position={CardpositionSetting}
 			data-card-rotation={CardRotationSetting}
 		>
-			<!-- <a-video id="ar-video" src={modelFile} width="2" height="1"></a-video> -->
-		
-			<!-- <a-entity
-				geometry="primitive: plane; height: 1; width: 1;"
-				material="shader: flat; color: blue; side: double; depthTest: true;"
-				position="0 0 0.1"
-				scale="1 1 1"
-			></a-entity> -->
 
 			<a-image src="/markers/grovery-holiday-card.png" width="1" height="1" position="0 0 0.01"></a-image>
 			
 			<a-entity
 				play-video="video: #alpha-video-background; autoplay: true"
-				material="shader: chromakey; src: #alpha-video-background; color: 0.01,1.00,0.00; side: double; depthTest: true;"
+				material="shader: chromakey; src: #alpha-video-background; color: 0.01,1,0.00; side: double; depthTest: true;"
 				geometry="primitive: plane; height: 1; width: 1;"
 				position="0 0 0.15"
 				scale="1 1 1"
@@ -185,7 +174,7 @@ const projectData = await import("src/data/projectData/grovery-holiday-2024.json
 
 			<a-entity
 				play-video="video: #alpha-video-midground; autoplay: true"
-				material="shader: chromakey; src: #alpha-video-midground; color: 0.01,1.00,0.00; side: double; depthTest: true;"
+				material="shader: chromakey; src: #alpha-video-midground; color: 0.01,1,0.00; side: double; depthTest: true;"
 				geometry="primitive: plane; height: 1; width: 1;"
 				position="0 0 0.3"
 				scale="1 1 1"
@@ -193,7 +182,7 @@ const projectData = await import("src/data/projectData/grovery-holiday-2024.json
 
 			<a-entity
 				play-video="video: #alpha-video-foreground; autoplay: true"
-				material="shader: chromakey; src: #alpha-video-foreground; color: 0.01,1.00,0.00; side: double; depthTest: true;"
+				material="shader: chromakey; src: #alpha-video-foreground; color: 0.01,1,0.00; side: double; depthTest: true;"
 				geometry="primitive: plane; height: 1; width: 1;"
 				position="0 0 0.45"
 				scale="1 1 1"
