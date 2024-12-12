@@ -1,0 +1,73 @@
+---
+
+const { infoLink, controls, modalId } = Astro.props;
+---
+
+<div class="modalWrapper" data-active="false" id={modalId}>
+    <div class="modalBackdrop modalClose"></div>
+    <div class="modalContent">
+        <div class="modalInner">
+			<div class="modalCloseButton modalClose">	
+				&#10005;</div>
+            <slot />
+        </div>
+    </div>
+</div>
+
+
+
+<!-- End HTML / Start CSS -->
+
+<style lang="scss">
+	.modalWrapper{
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		z-index: 600000;
+		opacity: 0;
+		pointer-events: none;
+		transition: 0.3s ease-in-out;
+		&[data-active="true"]{
+			opacity: 1;
+			pointer-events: auto;
+		}
+
+		.modalBackdrop{
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background-color: var(--trans-black);
+		}
+
+		.modalContent{
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			width: 90%;
+			max-width: 600px;
+			height: 75%;
+			max-height: 800px;
+			background-color: var(--white);
+			padding: 1em;
+
+			.modalCloseButton{
+				position: absolute;
+				top: 0.5em;
+				right: 0.5em;
+				background-color: var(--black);
+				color: var(--white);
+				width: 2em;
+				height: 2em;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				cursor: pointer;
+			}
+		}
+	}
+</style>

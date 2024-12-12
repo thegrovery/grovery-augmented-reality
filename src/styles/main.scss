@@ -11,10 +11,10 @@
 	--accent-color-light: #08080B;
 }
 .kode-mono{
-  font-family: "Kode Mono", monospace;
-  font-optical-sizing: auto;
-  font-weight: 400;
-  font-style: normal;
+	font-family: "Kode Mono", monospace;
+	font-optical-sizing: auto;
+	font-weight: 400;
+	font-style: normal;
 }
 
 //box-size reset
@@ -30,9 +30,16 @@
 		font-family: "Kode Mono", monospace;
 		background: var(--background-color);
 		color: var(--text-color);
-	}
 
-	/* ===== Basic Text Settings ===== */
+		/* ===== Image Settings ===== */
+		img{
+			width: 100%;
+			max-width: 100%;
+			height: auto;
+			display: inline-block;
+		}
+
+		/* ===== Basic Text Settings ===== */
 		h1, h2, h3, h4, h5, h6{
 			font-family: "Kode Mono", monospace;
 			font-size: 1.5rem;
@@ -52,7 +59,7 @@
 			border-top: var(--border-settings-main);
 		}
 
-	/* ===== Basic Layout/Sections ===== */
+		/* ===== Basic Layout/Sections ===== */
 		section{
 			padding: var(--padding-1) var(--padding-2);
 			&.noPadding{
@@ -63,6 +70,8 @@
 				padding: var(--padding-1) var(--padding-1);
 			}
 		}
+	}
+	
 
 
 /*======================*/
@@ -124,6 +133,9 @@
 	flex-direction: row;
 	justify-content: flex-start;
 	align-content: flex-start;
+	&.centered{
+		justify-content: center;
+	}
 }
 
 
