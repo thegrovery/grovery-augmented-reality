@@ -16,18 +16,17 @@ const { infoLink, controls } = Astro.props;
 <div class="ui-row lower ">
 
 	{controls && 
-		<div class="controls flexRow centered">
-			<div class="uiHeading flexRow centered">
+		<div class="controls ">
+			<div class="uiHeading ">
 				<span>Current View:&nbsp;</span>
 				<span data-view="wall">Wall (90°)</span>
 				<span data-view="flat">Flat (0°)</span>
 			</div>
 			
-			<div class="flexRow centered">
-				<div class="arButton controlButton" data-control-button="toggle">
-					Toggle View
-				</div>
+			<div class="arButton controlButton" data-control-button="toggle">
+				Toggle View
 			</div>
+			
 		</div>
 	}
 
@@ -65,6 +64,11 @@ const { infoLink, controls } = Astro.props;
 			bottom: 0px;
 			left: 50%;
 			transform:translate(-50%, 0%);
+			.arButton{
+				width: 100%;
+				max-width: 200px;
+				margin: auto;
+			}
 		}
 
 		.uiHeading{
