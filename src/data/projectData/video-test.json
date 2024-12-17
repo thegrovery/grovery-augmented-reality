@@ -4,7 +4,7 @@
     "projectBaseUrl": "https://grovery-ar.netlify.app/video-test",
     "markerFile": "/markers/grovery-holiday-marker-v2.mind",
     "markerImage": "/markers/grovery-holiday-marker-v2.jpg",
-    "modelFile": "/videos/test-video.mp4",
+    "modelFile": "/videos/video-test-green-screen.mp4",
     "customUI": {
         "bigText": "Scan the Marker",
         "smallText": "Point your camera at the marker image to view the 3D object.",
