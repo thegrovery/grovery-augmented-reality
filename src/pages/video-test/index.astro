@@ -50,29 +50,36 @@ const projectData = await import("src/data/projectData/video-test.json");
 >
 
 <script is:inline>
+	/* Video Control */
 	document.addEventListener("DOMContentLoaded", function(e){
-		//runs code after DOM load
-		const videoTarget = document.querySelector('#mind-ar-target');
-		const videoMedia = document.querySelector('#displayVideo');
+		const sceneEl = document.querySelector('a-scene');
+		sceneEl.addEventListener("arReady", (event) => {
+			// console.log("MindAR is ready")
+			const videoTarget = document.querySelector('#mind-ar-target');
+			const videoMedia = document.querySelector('#displayVideo');
 
-		videoTarget.addEventListener("targetFound", event => {
-			console.log("target found");
-			videoMedia.play();
+			//detect target found - play video
+			videoTarget.addEventListener("targetFound", event => {
+				console.log("target found");
+				videoMedia.play();
+			});
+
+			//detect target lost - pause video
+			videoTarget.addEventListener("targetLost", event => {
+				console.log("target lost");
+				videoMedia.pause();
+			});
 		});
-		// detect target lost
-		videoTarget.addEventListener("targetLost", event => {
-			console.log("target lost");
-			videoMedia.pause();
-		});
+		
 	});
-
-	
 </script>
 
-<div class="links">
+
+
+<!-- <div class="links">
 	<a href={infoLink}>Project Info</a>
 	<a href="/learn-more">Learn More</a>
-</div>
+</div> -->
 
 <!-- <div class="controls">
 	<div 
@@ -100,7 +107,7 @@ const projectData = await import("src/data/projectData/video-test.json");
 	xr-mode-ui="enabled: false"
 	device-orientation-permission-ui="enabled: false"
 	xrextras-gesture-detector
-	landing-page
+	loading-screen="dotsColor: red; backgroundColor: black"
 	xrextras-loading
 	xrextras-runtime-error
 	renderer="colorManagement: true"
@@ -120,12 +127,12 @@ const projectData = await import("src/data/projectData/video-test.json");
 			loop="true"
 			src="/videos/video-test-green-screen.mp4">
 		</video> -->
-		<!-- <a-asset-item 
+		<a-asset-item 
 			id="displayVideo" 
 			src={modelFile}
-		></a-asset-item> -->
+		></a-asset-item>
 		
-		<video id="displayVideo" autoplay loop="true" preload="auto" src={modelFile}></video>
+		<!-- <video id="displayVideo" autoplay loop="true" preload="auto" src={modelFile}></video> -->
 	</a-assets>
 
 	<a-camera 
@@ -177,6 +184,24 @@ const projectData = await import("src/data/projectData/video-test.json");
 </a-scene>
 
 </ARLayout>
+
+<script is:inline>
+	/* Video Control */
+	document.addEventListener("DOMContentLoaded", function(e){
+		const sceneEl = document.querySelector('a-scene');
+		sceneEl.addEventListener("arReady", (event) => {
+			//const videoTarget = document.querySelector('#mind-ar-target');
+			let video = document.querySelector('#displayVideo');
+			console.log("+++ asset manager loader detection code started +++");
+
+			console.log(document.querySelector('a-assets').fileLoader);
+			console.log(THREE.Cache);
+			video.addEventListener("loaded", function(e){
+				alert("video loaded");
+			});
+		});
+	});
+</script>
 
 
 <style lang="scss">
