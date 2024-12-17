@@ -84,7 +84,6 @@ const projectData = await import("src/data/projectData/video-test.json");
 	xr-mode-ui="enabled: false"
 	device-orientation-permission-ui="enabled: false"
 	xrextras-gesture-detector
-	loading-screen="dotsColor: red; backgroundColor: black"
 	xrextras-loading
 	xrextras-runtime-error
 	renderer="colorManagement: true"
@@ -113,9 +112,10 @@ const projectData = await import("src/data/projectData/video-test.json");
 		<video 
 			id="displayVideo" 
 			src={modelFile}
-			 
+			muted="false"
 			loop="true" 
 			preload="auto" 
+			autoplay="true"
 			webkit-playsinline="true"
 			playsinline="true"
 			crossorigin="anonymous"
