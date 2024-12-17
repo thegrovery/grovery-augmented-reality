@@ -106,7 +106,7 @@ const projectData = await import("src/data/projectData/video-test.json");
 	renderer="colorManagement: true"
 	xrweb="allowedDevices: any; defaultEnvironmentFogIntensity: 0.5; defaultEnvironmentFloorTexture: #grass;defaultEnvironmentFloorColor: #FFF;defaultEnvironmentSkyBottomColor: #B4C4CC; defaultEnvironmentSkyTopColor: #5ac8fa; defaultEnvironmentSkyGradientStrength: 0.5;">
 	<a-assets>
-		<img id="card" src="/images/grovery-vr-logo.png" />
+		<!-- <img id="card" src="/images/grovery-vr-logo.png" /> -->
 
 		<!-- <a-asset-item 
 			id="myvideo" 
@@ -120,8 +120,12 @@ const projectData = await import("src/data/projectData/video-test.json");
 			loop="true"
 			src="/videos/video-test-green-screen.mp4">
 		</video> -->
-
-		<video id="displayVideo" autoplay loop="true" src={modelFile}></video>
+		<!-- <a-asset-item 
+			id="displayVideo" 
+			src={modelFile}
+		></a-asset-item> -->
+		
+		<video id="displayVideo" autoplay loop="true" preload="auto" src={modelFile}></video>
 	</a-assets>
 
 	<a-camera 

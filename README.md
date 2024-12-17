@@ -2,16 +2,16 @@
 
 ## Resources
 Important Links:
-- Mind-AR Links:    
+- Mind-AR - this is the main AR script for the project.
     - [Mind AR - Main AR Script](https://github.com/hiukim/mind-ar-js)
     - [Mind AR - Github Repository](https://github.com/hiukim/mind-ar-js)
     - [Compile Marker Images](https://hiukim.github.io/mind-ar-js-doc/tools/compile/)
     - [Mind AR - Image Tracking Examples](https://hiukim.github.io/mind-ar-js-doc/examples/summary)
     - [Tracking Config Options](https://hiukim.github.io/mind-ar-js-doc/quick-start/tracking-config)
-- AR.js Links:
+- AR.js - this is the secondary AR script for the project, used for markerless and GPS -based AR.
     - [AR.js - Github Repository](https://github.com/AR-js-org/AR.js)
     - [AR.js - Documentation](https://ar-js-org.github.io/AR.js-Docs/)
-- 8th Wall Links:   
+- 8th Wall - this is a high-quality AR vendor with free-to-use code.
     - [8th Wall - Green Screen Video Code Source](https://www.8thwall.com/playground/alpha-video-slam-aframe/code/)
     - [8th Wall - Green Screen Video Code Source](https://www.8thwall.com/playground/alpha-video-slam-aframe/code/)
 
